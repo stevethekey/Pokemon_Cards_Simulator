@@ -160,7 +160,7 @@ int main()
                 for(short int j = 0; j < numOfCards; j++)
                 {
                     cout << j +1 << ") ";
-                    players_binder.playerOpenpack(PokemonPacks.OpenPack(packOption));
+                    players_binder.saveCardPulled(PokemonPacks.OpenPack(packOption));
                 }
                 break;
             }

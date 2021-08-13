@@ -94,6 +94,38 @@ PokeCards& PokeCards::operator= (const PokeCards &rightObject)
     return *this;
 }
 
+bool PokeCards::SortandShowPokemonbyValue()
+{
+    if(currentSize==0 && maxSize == 1)
+    {
+        cout << "There is nothing to sort! The amount of cards in the pack is 0." << endl;
+        return false;
+    }
+    /*
+    else
+    {
+        int SMALLEST_VALUE = 0;
+        int SECOND_SMALLEST= 0;
+        int THIRD_SMALLEST= 0;
+        int FOURTH_SMALLEST= 
+        int HIGHEST_VALUE = 0;
+        
+        for(short int j = 0; j < maxSize; j++)
+        {
+            if(allCards[j].GetValue() < SMALLEST_VALUE)
+            {
+                SMALLEST_VALUE = j;
+
+
+            }
+        }
+
+        
+    }*/
+}
+
+
+
 
 
 bool PokeCards::ImportPokemon(const char* filename)
@@ -287,61 +319,18 @@ int lottoNumber(short int n = 100, short int n2 = 1)     //returns a number betw
 }
 
 
-const Pokemon& PokeCards::pullAPokemon() 
+const Pokemon& PokeCards::pullAPokemon(char whichHelper) 
 {    
-    //cout << "pre stage. cs here is " << currentSize << ", and maxSize here is " << maxSize << "\n\n" << endl;
-    
-    if(allCards[currentSize-1].GetType()=="Grass")
+    //Refers to a specific helper pack-opener-function to pull a Pokemon Card!
+    switch(whichHelper)
     {
-        return PullGrass();
+        case 'F': PullFire(); break;
+        case 'W': PullWater(); break;
+        case 'G': PullGrass(); break;
     }
-
-    else if(allCards[currentSize-1].GetType()=="Fire")
-    {
-        return PullFire();
-    }
-
-    else if(allCards[currentSize-1].GetType()=="Rock")
-    {
-        if(allCards[currentSize-5].GetType()=="Water")
-        {
-            return PullWater();
-        }
-        else
-        {
-            cout << "Compiler looked at last card, figured rock, checked to see if water, confirmed rock (in pull a poke funct)" << endl;
-        }
-    }
-    
-/*
-    if(allCards[this->currentSize-1].GetType()== "Grass")
-    {
-        return PullGrass();
-    }
-
-    else if(allCards[this->currentSize -1].GetType()=="Fire")
-    {
-        cout << "FINAL STAGE" << endl; //AH HA! Culprit found here
-        return PullFire();
-    }
-
-    else if(allCards[this->currentSize -1].GetType()=="Rock")
-    {
-        if(allCards[this->currentSize - 5].GetType()=="Water")
-        {
-            return PullWater();
-        }
-
-        else
-        {
-        }
-        
-    }
-    */
-
 }
 
-PokeCards& PokeCards::playerOpenpack(const Pokemon & pokemonCardpulledFrompack)
+PokeCards& PokeCards::saveCardPulled(const Pokemon & pokemonCardpulledFrompack) //really should be called packType inistead of pokemoncardpulledfrompack
 {
     //cout << "\nAt start of function, currentSize is " << currentSize << endl;
     //cout << "maxSize is " << maxSize << endl;

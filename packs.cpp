@@ -11,21 +11,21 @@ PokePacks::PokePacks()
     //PoisonCards.ImportType(Generation1, "Poison");   
 };
 
-const Pokemon& PokePacks::OpenPack(char firstLetterofType)
+const Pokemon& PokePacks::OpenPack(char firstLetterofType)  //if you already know what are in the pack of cards, why are you looking at the last card
 {
     if(firstLetterofType == 'G')
     {
-        GrassCards.pullAPokemon();
+        GrassCards.pullAPokemon(firstLetterofType);
     }
 
     else if (firstLetterofType == 'F')
     {
-        FireCards.pullAPokemon();
+        FireCards.pullAPokemon(firstLetterofType);
     }
 
     else if(firstLetterofType=='W')
     {
-        WaterCards.pullAPokemon();
+        WaterCards.pullAPokemon(firstLetterofType);
     }
 }
 
